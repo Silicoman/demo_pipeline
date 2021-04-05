@@ -13,8 +13,8 @@ pipeline {
         maven 'Maven_3.6.0'
         jdk 'OpenJDK_11'
     }
-    Stages {
-        Stage { 
+    stages {
+        stage { 
            steps {
                 script {
                     def maven_operation = "mvn clean install"
