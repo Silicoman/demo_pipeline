@@ -9,9 +9,23 @@ pipeline {
     triggers {
         pollSCM('H/5 * * * *')
     }
+    tools {
+        maven 'Maven_3.6.0'
+        jdk 'OpenJDK_11'
+    }
     Stages {
         Stage { 
-            echo 'Hello World!'
+           steps {
+                script {
+                    def maven_operation = "mvn clean install"
+                    if (isUnix()) {
+                        sh maven_operation
+                    }
+                    else {
+                        bat maven_operation
+                    }
+                }
+            }
         }
     }
     post {
