@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven_3.6.0'
+        jdk 'OpenJDK11'
+    }
+
+    Stages {
+        Stage {
+            steps {
+                script {
+                    def maven_operation = "mvn clean install"
+                    if (isUnix()) {
+                        sh maven_operation
+                    }
+                    else {
+                        bat maven_operation
+                    }
+                }
+            }
+            echo 'Hello World!'
+        }
+    }
+}
+
+

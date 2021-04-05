@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10',artifactNumToKeepStr:'1'))
+        skipStagesAfterUnstable()
+        disableConcurrentBuilds()
+        timeout(time: 10, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('H/5 * * * *')
+    }
+    Stages {
+        Stage { 
+            echo 'Hello World!'
+        }
+    }
+    post {
+        success {
+            archiveArtifacts(artifacts: '**/target/*.jar')
+            office365ConnectorSend color: '#22780F', message: "Coucou", status: 'OK', webhookUrl: 'h37'
+        }
+        failure {
+            office365ConnectorSend color: '#22780F', message: "Coucou", status: 'OK', webhookUrl: 'h37'
+        }
+        always {
+            deleteDir()
+        }
+    }
+}
