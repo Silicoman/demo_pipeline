@@ -7,7 +7,7 @@ Pour réaliser le tutoriel, vous aurez besoin d'avoir à disposition :
 - un compte Github, ou un serveur git on-premise.
 - un serveur Jenkins (localhost suffit)
 - Optionnellement: OpenJdk 11 et une installation Maven colocalisé au serveur Jenkins
-- Optionnellement: un compte Microsoft Teams
+- Optionnellement: un groupe Slack
 
 Le projet java intégré est un projet template de la fondation Spring. Il est intégré dans le dépot git afin de servir de support aux démonstrations.
 
