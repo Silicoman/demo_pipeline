@@ -1,7 +1,7 @@
-Pipeline {
+pipeline {
     Stages {
         Stage { 
-            echo 'hello World!'
+            echo 'Hello World!'
         }
     }
 }
