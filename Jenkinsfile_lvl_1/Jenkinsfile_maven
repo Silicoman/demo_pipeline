@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    def maven_operation = "mvn clean install"
+                    def maven_operation = "mvn clean install -f demo_apps/pom.xml"
                     if (isUnix()) {
                         sh maven_operation
                     }
